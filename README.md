@@ -124,10 +124,10 @@ The `teams/` directory is used to store team pictures. The pictures should be na
 - Custom styles configuration (Or read UO styles?)
 - Game favorite voting files.
 - Global error handling.
-- Better subdirectory support.
 - Upgrade testing.
 - Long term parameter (long-term caching).
 - Unify configs better.
+- Global search.
 
 
 ## Troubleshooting
@@ -146,6 +146,15 @@ Live! by BULA developed by [BULA](https://beachultimate.org) and Justin Palmer (
 
 
 ### Changelog
+
+#### 1.2.2
+- Simplify config handling.
+- Other small changes.
+- Revert missing font files.
+- Include footer link to beachultimate.org.
+
+#### 1.2.1
+- Reduce package size by removing unused assets (~7MB to ~3MB).
 
 #### 1.2.0
 - Update to support subdirectory placement of Live! by BULA.

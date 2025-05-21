@@ -1,4 +1,4 @@
-# Live! by BULA – Application Installation Guide
+# Live! by BULA – Installation and Configuration Guide
 
 This guide explains how to set up and configure the Live! by BULA application within an exsiting UltiOrganizer install.
 
@@ -19,27 +19,7 @@ The contained `live/` directory should be placed in the root directory (so next 
 ├── ...
 ```
 
-### 2. Configure the Application
-
-1. Navigate to the `/live/conf` directory
-2. Make a copy of `LocalConfig.example.php` and rename it `LocalConfig.php`
-3. Edit the new `LocalConfig.php` and update the necessary values:
-   - Make sure `UO_URL_PREFIX` is set to the correct value for your installation.
-   - Set `LIVE_SEASON_ID` to your current season ID from the UltiOrganizer database
-   - Configure other settings as needed (Google Analytics, URLs, toggles, etc.)
-
-Example:
-```php
-$localConfig = [
-    'LIVE_SEASON_ID' => 'YOUR_SEASON_ID',
-    'TOURNAMENT_NAME' => 'Your Tournament Name',
-    // Other settings...
-];
-```
-
-There are several placeholder image assets in `conf/logos/`. You should add similar images to the `conf/logos/` directory and update the `HOME_LOGO_PATH`, `TV_SCREEN_LOGO_PATH` and `SOCIAL_SHARE_LOGO_PATH` in your config to point to your logos in `conf/logos/`.
-
-### 3. Enable Live Application
+### 2. Enable Live Application
 
 Include the "enable-live.php" file in the main `index.php` file:
 
@@ -58,10 +38,19 @@ session_start();                    // <-- Line already exists
 include_once __DIR__ . '/live/enable-live.php';   // <-- ADD THIS LINE
 ```
 
-Note that there's are also two `const` variables that you can set:
 
-- `UO_LOCK_FILE` – If not `false`, it should be a file that will be displayed. Useful for displaying a custom "Coming Soon" page or email capture form.
-- `DEFAULT_TO_LIVE` – If users visting the site should be redirected to Live! by BULA or taken to the default UltiOrgizer page. The Live! by BULA app will still be available at `/?view=live/index`, this useful for testing an install before going public.
+### 3. Configure the Application
+
+1. Navigate to your UltiOrganizer site and change the `?view=xx`  to `?view=live/index` (e.g. `http://your-site.org/?view=live/index`)
+2. Complete the initial setup form:
+   - Set the `UO_URL_PREFIX` to the correct value for your installation (e.g., `/` for root, `/scores/` for a subdirectory).
+   - Create a secure admin password and make a note of it.
+4. Log in with your new password.
+5. Configure the application settings:
+   - Set `LIVE_SEASON_ID` to your current season ID  from the UltiOrganizer database. Visible in the UltiOrganizer URL as the `season` parameter (example, WBUCC2024).
+   - Configure other settings as needed (URLs, section toggles, etc.)
+
+There are several placeholder image assets in `/live/conf/logos/`. Don't replace them, you should add similar images to the `/live/conf/logos/` directory and update the `HOME_LOGO_PATH`, `TV_SCREEN_LOGO_PATH` and `SOCIAL_SHARE_LOGO_PATH` in your config to point to your logos in `/live/conf/logos/`. Or, point them to an external absolute URL (e.g. `https://your-site.org/images/logo.png`).
 
 ### 4a. Configure .htaccess (Optional)
 
@@ -92,32 +81,18 @@ location / {
 }
 ```
 
-To route requests to Live! by BULA when UltiOrganizer is installed in an subdirectory, like `ultiorganizer/`:
+To route requests to Live! by BULA when UltiOrganizer is installed in an subdirectory, like `ultiorganizer/`, you may need to add something like the following to your nginx configuration:
 
 ```
 location ^~ /ultiorganizer/ {
    try_files $uri $uri/ /ultiorganizer/index.php?$query_string;
-
-   location ~ \.php$ {
-      try_files $uri =404;
-      fastcgi_split_path_info ^(.+\.php)(/.+)$;
-      fastcgi_pass unix:/run/php-fpm.sock;
-      fastcgi_buffers 16 16k;
-      fastcgi_buffer_size 32k;
-      fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-      fastcgi_param SCRIPT_NAME $fastcgi_script_name;
-      fastcgi_index index.php;
-      include fastcgi_params;
-      fastcgi_intercept_errors off;
-      fastcgi_read_timeout 10m;
-      fastcgi_param SERVER_NAME $host;
-      fastcgi_param HTTPS $fcgi_https;
-   }
 }
 ```
 
 ### 5. Add team pictures
-The `teams/` directory is used to store team pictures. The pictures should be named `<TEAMID>-{ANYTHING}.jpg` and placed in the `teams/` directory. The team ID is the same as the team ID in the UltiOrganizer database, so `3-ESP-MIX.jpg` would be a picture for team 3.
+There's a setting in the admin interface to enable the display of team pictures on team pages.
+
+The `/live/teams/` directory is used to store team pictures. The pictures should be named `<TEAMID>-{ANYTHING}.jpg`. The team ID is the same as the team ID in the UltiOrganizer database, so `3-ESP-MIX.jpg` would be a picture for team 3, regardless of the text after the dash.
 
 
 ### Coming soon
@@ -126,19 +101,19 @@ The `teams/` directory is used to store team pictures. The pictures should be na
 - Global error handling.
 - Upgrade testing.
 - Long term parameter (long-term caching).
-- Unify configs better.
 - Global search.
 
 
 ## Troubleshooting
 
-- If you encounter issues, check that the `LocalConfig.php` file has correct values
+- If you encounter issues with the admin interface, you can manually configure by creating a `LocalConfig.php` file in the `live/conf/` directory. See `LocalConfig.example.php` for details.
 - Ensure the `enable-live.php` file is included in the correct location in your main `index.php`
 - Check file permissions for data directories
+- If the admin interface shows no configuration options after login, check that the `conf/` directory is writable
 
 ## Additional Resources
 
-For more information on configuration options, refer to the comments in `LocalConfig.example.php`.
+For more information on configuration options, refer to the comments in the admin interface or `LocalConfig.example.php`.
 
 
 ### Credits
@@ -146,6 +121,16 @@ Live! by BULA developed by [BULA](https://beachultimate.org) and Justin Palmer (
 
 
 ### Changelog
+
+#### 1.4.0
+- Added new admin interface for easier configuration.
+- Improved initial setup experience.
+- Better field name handling.
+- Updated documentation.
+
+#### 1.3.0
+- Smoother config handling.
+- Config admin page.
 
 #### 1.2.2
 - Simplify config handling.

@@ -1,14 +1,14 @@
 # Live! by BULA – Installation and Configuration Guide
 
-This guide explains how to set up and configure the Live! by BULA application within an exsiting UltiOrganizer install.
+This guide explains how to set up and configure the Live! by BULA application within an existing UltiOrganizer install.
 
 ## Installation Steps
 
 ### 1. Extract Live! by BULA
-The contained `live/` directory should be placed in the root directory (so next to `/lib/`, `/locale/`, etc.)
+The `live/` directory contained in the release zipshould be placed in the root directory (so next to `/lib/`, `/locale/`, etc.)
 ```
 /
-├─ admin/
+├── admin/
 ├── conf /
 ├── ...
 ├── images/
@@ -21,10 +21,10 @@ The contained `live/` directory should be placed in the root directory (so next 
 
 ### 2. Enable Live Application
 
-Include the "enable-live.php" file in the main `index.php` file:
+Include the "enable-live.php" file in the main `/index.php` file:
 
 ```php
-// Add this line after starting the session
+// Include Live! by BULA
 include_once __DIR__ . '/live/enable-live.php';
 ```
 
@@ -34,7 +34,7 @@ The correct placement is after the session has been started:
 session_name(UO_SESSION_NAME);      // <-- Line already exists
 session_start();                    // <-- Line already exists
 
-// Include the live application
+// Include Live! by BULA
 include_once __DIR__ . '/live/enable-live.php';   // <-- ADD THIS LINE
 ```
 
@@ -45,9 +45,9 @@ include_once __DIR__ . '/live/enable-live.php';   // <-- ADD THIS LINE
 2. Complete the initial setup form:
    - Set the `UO_URL_PREFIX` to the correct value for your installation (e.g., `/` for root, `/scores/` for a subdirectory).
    - Create a secure admin password and make a note of it.
-4. Log in with your new password.
+4. Log in with your new password. Important to note that your site won't work until you add a few more configuration settings.
 5. Configure the application settings:
-   - Set `LIVE_SEASON_ID` to your current season ID  from the UltiOrganizer database. Visible in the UltiOrganizer URL as the `season` parameter (example, WBUCC2024).
+   - You MUST set the `LIVE_SEASON_ID` to your current season ID from the UltiOrganizer database. Visible in the UltiOrganizer URL as the `season` parameter (example, `WBUCC2024`).
    - Configure other settings as needed (URLs, section toggles, etc.)
 
 There are several placeholder image assets in `/live/conf/logos/`. Don't replace them, you should add similar images to the `/live/conf/logos/` directory and update the `HOME_LOGO_PATH`, `TV_SCREEN_LOGO_PATH` and `SOCIAL_SHARE_LOGO_PATH` in your config to point to your logos in `/live/conf/logos/`. Or, point them to an external absolute URL (e.g. `https://your-site.org/images/logo.png`).
@@ -119,8 +119,21 @@ For more information on configuration options, refer to the comments in the admi
 ### Credits
 Live! by BULA developed by [BULA](https://beachultimate.org) and Justin Palmer (https://github.com/layoutd).
 
+## License
+
+This project is licensed under the [CC BY-NC-ND 4.0 License](https://creativecommons.org/licenses/by-nc-nd/4.0/).
+© 2025 BULA Ltd. You may use and share this work non-commercially with attribution (Live! by BULA in the footer), but you may not modify it.
+Please reach out (live@beachultimate.org) for more details.
+
+
 
 ### Changelog
+
+#### 1.4.1
+- Fixes for tournaments with missing timeslots.
+- Fixes in admin panel paths.
+- Customizable colors.
+- More robust standings table parsing.
 
 #### 1.4.0
 - Added new admin interface for easier configuration.

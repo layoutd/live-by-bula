@@ -2,6 +2,8 @@
 
 This guide explains how to set up and configure the Live! by BULA application within an existing UltiOrganizer install.
 
+📣 Please keep in mind that you must sign the [Terms of Use](https://github.com/layoutd/live-by-bula/blob/main/Terms%20of%20Use%20-%20Live%20by%20BULA.pdf) and send the signed copy to live@beachultimate.org before using Live! by BULA.
+
 ## Installation Steps
 
 ### 1. Extract Live! by BULA
@@ -128,6 +130,14 @@ Please reach out (live@beachultimate.org) for more details.
 
 
 ### Changelog
+
+#### 1.4.3
+- Add voting endpoint.
+- Improve static page title for SEO.
+
+#### 1.4.2
+- Get maintenance page working.
+- Allow UO login bypass.
 
 #### 1.4.1
 - Fixes for tournaments with missing timeslots.

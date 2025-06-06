@@ -132,6 +132,12 @@ Please reach out (live@beachultimate.org) for more details.
 
 ## 📅 Changelog
 
+### 1.5.2
+- Fix missing points icon in tournament header.
+- Fix flickering video position on desktop.
+- Fix group by filter in game table deep link.
+- Fix games table pagination for grouped games.
+
 ### 1.5.1
 - Tournament header remembers expansion state.
 - Custom tournament location text.

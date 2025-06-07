@@ -132,6 +132,9 @@ Please reach out (live@beachultimate.org) for more details.
 
 ## 📅 Changelog
 
+### 1.6.2
+- Make game previews clickable on home scoreboard.
+
 ### 1.6.1
 - Add package update script.
 - Animate scoreboard scroll to the right.

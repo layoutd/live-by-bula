@@ -132,6 +132,9 @@ Please reach out (live@beachultimate.org) for more details.
 
 ## 📅 Changelog
 
+### 1.6.3
+- Make sure team names in game previews are clickable.
+
 ### 1.6.2
 - Make game previews clickable on home scoreboard.
 

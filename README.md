@@ -132,6 +132,10 @@ Please reach out (live@beachultimate.org) for more details.
 
 ## 📅 Changelog
 
+### 1.6.1
+- Add package update script.
+- Animate scoreboard scroll to the right.
+
 ### 1.6.0
 - Better share information in meta description.
 - Remove view parameter from URL when not needed.

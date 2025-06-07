@@ -132,6 +132,12 @@ Please reach out (live@beachultimate.org) for more details.
 
 ## 📅 Changelog
 
+### 1.6.0
+- Better share information in meta description.
+- Remove view parameter from URL when not needed.
+- Add team pictures directly to the package.
+- Add video size toggle button.
+
 ### 1.5.2
 - Fix missing points icon in tournament header.
 - Fix flickering video position on desktop.

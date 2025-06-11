@@ -132,6 +132,9 @@ Please reach out (live@beachultimate.org) for more details.
 
 ## 📅 Changelog
 
+### 1.7.0
+- Add SEO details and links when pages are loaded.
+
 ### 1.6.3
 - Make sure team names in game previews are clickable.
 

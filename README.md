@@ -6,8 +6,12 @@ This guide explains how to set up and configure the [Live! by BULA](https://gith
 
 ## ⚙️ Installation Steps
 
+### 0. Download the latest release
+
+The latest release is available on the [Live! by BULA GitHub repository](https://github.com/layoutd/live-by-bula/releases/latest).
+
 ### 1. Extract Live! by BULA
-The `live/` directory contained in the release zip should be placed in the root directory (so next to `/lib/`, `/locale/`, etc.)
+Unzip the release package in the root directory of your UltiOrganizer install. It will create a `live/` directory:
 ```
 /
 ├── admin/
@@ -23,15 +27,13 @@ The `live/` directory contained in the release zip should be placed in the root 
 
 ### 2. Configure the Application
 
-1. Navigate to your UltiOrganizer site and change the `?view=xx`  to `?view=live/index` (e.g. `http://your-site.org/?view=live/index`)
+1. Navigate to your UltiOrganizer site and change the `?view=xx` to `?view=live/index` (e.g. `http://your-site.org/?view=live/index`)
 2. Complete the initial setup form:
    - Set the `UO_URL_PREFIX` to the correct value for your installation (e.g., `/` for root, or `/scores/` for a subdirectory).
+   - Choose the season you want to use with the Live! by BULA interface.
    - Create a secure admin password and make a note of it.
-4. Log in with your new password. It's important to note that your site won't work until you add a few more configuration settings.
-5. Configure the application settings:
-   - You MUST set the `LIVE_SEASON_ID` to your current season ID from the UltiOrganizer database. Visible in the UltiOrganizer URL as the `season` parameter (example, `WBUCC2024`).
-   - Configure other settings as needed (URLs, section toggles, etc.). Each setting has a description of what it does.
-6. Configure visual assets:
+3. Configure other settings as needed (URLs, section toggles, etc.). Each setting has a description of what it does.
+4. Configure visual assets:
    There are several placeholder image assets in `/live/conf/logos/`. Don't replace them, you should add similar images to the `/live/conf/logos/` directory and update the `HOME_LOGO_PATH`, `TV_SCREEN_LOGO_PATH` and `SOCIAL_SHARE_LOGO_PATH` in your config to point to your logos in `/live/conf/logos/`. Or, point them to an external absolute URL (e.g. `https://your-site.org/images/logo.png`).
 
 
@@ -55,6 +57,9 @@ The `live/` directory contained in the release zip should be placed in the root 
    ```
 
 2. Update the `DEFAULT_TO_LIVE` setting to `true` in the admin interface.
+   - This will make Live! by BULA the default page when the user visits the site.
+   - You can still see the UltiOrganizer login page by visiting `http://your-site.org/?view=login`.
+   - With this setting disabled, you can still access the Live! by BULA interface by visiting `http://your-site.org/?view=live/index`.
 
 ### 4a. Configure .htaccess (Optional)
 
@@ -99,6 +104,20 @@ There's a setting in the admin interface to enable the display of team pictures 
 The `/live/teams/` directory is used to store team pictures. The pictures should be follow the naming convention `<TEAMID>-{ANYTHING}.jpg`. The team ID is the same as the team ID in the UltiOrganizer database, so `3-ESP-MIX.jpg` would be a picture for team 3, regardless of the text after the first hyphen.
 
 
+## Updating Live! by BULA
+
+### Download and install the latest release
+In the release package, there's a shell script that will download a recent release of Live! by BULA and install it in the correct location. To do so, run the following command from the root of your UltiOrganizer install:
+```
+./live/bin/update-from-github.sh
+```
+Select the number of the version to install and overwrite all files.
+
+### Notes
+- The script will not overwrite any configuration files.
+- The script will leave the .zip package in the UltiOrganizer root directory. In theory, you should be able to unzip older versions of Live! by BULA and install them in the same way if you encounter issues after upgrading.
+
+
 ## 🔧 Troubleshooting
 
 - If you encounter issues with the admin interface, you can manually update the configuration by editing the `local-config.json` file in the `live/conf/` directory.
@@ -112,11 +131,12 @@ For more information on configuration options, refer to the comments in the admi
 
 ## 🔮 Tentative roadmap
 - Global error handling.
-- Improve testing.
+- Improve regression testing.
 - Long term parameter (long-term caching).
 - Global search.
-- Flickering video on desktop.
-- Custom tournament location text.
+- Multi-tournament support.
+- Improved subdirectory support.
+- Linked teams in last bracket phase.
 
 
 ## 📜 Credits
@@ -131,6 +151,10 @@ Please reach out (live@beachultimate.org) for more details.
 
 
 ## 📅 Changelog
+
+### 1.7.2
+- Add season selection to admin initialization.
+- Improve page titles, URLs and SEO, especially for subdirectory installations.
 
 ### 1.7.1
 - Add final placements SEO links.

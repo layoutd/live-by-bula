@@ -151,6 +151,10 @@ Please reach out (live@beachultimate.org) for more details.
 
 ## 📅 Changelog
 
+### 1.7.6
+- Fix heartbeat file generation.
+- Pass more qualified URLs in the API config.
+
 ### 1.7.5
 - Fix scoreboard game links for subdirectory installations.
 

@@ -151,6 +151,9 @@ Please reach out (live@beachultimate.org) for more details.
 
 ## 📅 Changelog
 
+### 1.7.5
+- Fix scoreboard game links for subdirectory installations.
+
 ### 1.7.4
 - Fix scoreboard game links.
 

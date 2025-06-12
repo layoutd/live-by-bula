@@ -135,7 +135,6 @@ For more information on configuration options, refer to the comments in the admi
 - Long term parameter (long-term caching).
 - Global search.
 - Multi-tournament support.
-- Improved subdirectory support.
 - Linked teams in last bracket phase.
 
 
@@ -151,6 +150,13 @@ Please reach out (live@beachultimate.org) for more details.
 
 
 ## 📅 Changelog
+
+### 1.7.4
+- Fix scoreboard game links.
+
+### 1.7.3
+- Improved subdirectory support.
+- Improved client-side caching.
 
 ### 1.7.2
 - Add season selection to admin initialization.

@@ -8,7 +8,13 @@ This guide explains how to set up and configure the [Live! by BULA](https://gith
 
 ### 0. Download the latest release
 
-The latest release is available on the [Live! by BULA GitHub repository](https://github.com/layoutd/live-by-bula/releases/latest).
+The latest release is available on the [Live! by BULA GitHub repository](https://github.com/layoutd/live-by-bula/releases/latest). Alternatively, you can download the latest release with this command:
+```
+curl -s https://api.github.com/repos/layoutd/live-by-bula/releases/latest \
+  | jq -r '.assets[] | select(.name | endswith(".zip")) | .browser_download_url' \
+  | xargs curl -LO
+```
+It will download the latest release to the current directory as a zip file named `live-by-bula-<VERSION>.zip`.
 
 ### 1. Extract Live! by BULA
 Unzip the release package in the root directory of your UltiOrganizer install. It will create a `live/` directory:
@@ -150,6 +156,14 @@ Please reach out (live@beachultimate.org) for more details.
 
 
 ## 📅 Changelog
+
+### 1.7.7
+- Youtube and SolidSport videos embed, all other URLs open a new URL.
+- Installation and initialization improvements.
+- Error fix for games with no goals.
+- Additional SEO data.
+- Season-specific static cache values.
+- Remove unused media/logos directory.
 
 ### 1.7.6
 - Fix heartbeat file generation.

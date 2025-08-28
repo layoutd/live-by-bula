@@ -157,6 +157,11 @@ Please reach out (live@beachultimate.org) for more details.
 
 ## 📅 Changelog
 
+### 1.7.8
+- Cache and UO admin buttons in admin panel.
+- Flag display logic for domestic tournaments.
+- Fix team page errors when tournament spirit is disabled.
+
 ### 1.7.7
 - Youtube and SolidSport videos embed, all other URLs open a new URL.
 - Installation and initialization improvements.

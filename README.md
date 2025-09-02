@@ -157,6 +157,12 @@ Please reach out (live@beachultimate.org) for more details.
 
 ## 📅 Changelog
 
+### 1.7.9
+- Update feedback and BULA contact information in footer.
+- Add additional contact emails configuration field.
+- Spirit menu and page respect UO admin spirit configuration.
+- Reinstate 404 image.
+
 ### 1.7.8
 - Cache and UO admin buttons in admin panel.
 - Flag display logic for domestic tournaments.

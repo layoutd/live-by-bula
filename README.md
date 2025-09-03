@@ -157,6 +157,13 @@ Please reach out (live@beachultimate.org) for more details.
 
 ## 📅 Changelog
 
+### 1.8.0
+- Clarify initial voting configuration.
+- Improve filter and grouping compatibility in games table.
+- Improve bracket view score updates.
+- Add tournament logo to loading splash screen.
+- Adjust recommended social share image size.
+
 ### 1.7.9
 - Update feedback and BULA contact information in footer.
 - Add additional contact emails configuration field.

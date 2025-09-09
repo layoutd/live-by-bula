@@ -1,3 +1,5 @@
+<img width="128" height="128" alt="favicon" src="https://github.com/user-attachments/assets/75a35aad-81e1-4481-aca5-7f4996d179c6" />
+
 # Live! by BULA – Installation and Configuration Guide
 
 This guide explains how to set up and configure the [Live! by BULA](https://github.com/layoutd/live-by-bula/) application within an existing [UltiOrganizer](https://github.com/ultiorganizer/ultiorganizer) install.

@@ -1,5 +1,3 @@
-<img width="128" height="128" alt="favicon" src="https://github.com/user-attachments/assets/75a35aad-81e1-4481-aca5-7f4996d179c6" />
-
 # Live! by BULA – Installation and Configuration Guide
 
 This guide explains how to set up and configure the [Live! by BULA](https://github.com/layoutd/live-by-bula/) application within an existing [UltiOrganizer](https://github.com/ultiorganizer/ultiorganizer) install.
@@ -144,6 +142,7 @@ For more information on configuration options, refer to the comments in the admi
 - Global search.
 - Multi-tournament support.
 - Linked teams in last bracket phase.
+- Production-ready client-side caching.
 
 
 ## 📜 Credits
@@ -158,6 +157,11 @@ Please reach out (live@beachultimate.org) for more details.
 
 
 ## 📅 Changelog
+
+### 1.8.1
+- Better meta image route handling.
+- Bracket game link replacements are restricted to only look in games for the current bracket phase.
+- Improve charts text colors for dark mode.
 
 ### 1.8.0
 - Clarify initial voting configuration.

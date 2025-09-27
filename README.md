@@ -158,6 +158,9 @@ Please reach out (live@beachultimate.org) for more details.
 
 ## 📅 Changelog
 
+### 1.8.2
+- Add live game icon to bracket and crossover game links.
+
 ### 1.8.1
 - Better meta image route handling.
 - Bracket game link replacements are restricted to only look in games for the current bracket phase.

@@ -158,6 +158,12 @@ Please reach out (live@beachultimate.org) for more details.
 
 ## 📅 Changelog
 
+### 1.8.3
+- Add a persistent division preference for more consistent navigation.
+- Always update to full URL on spirit and stats pages.
+- Fix annoying tiny zoom on iOS when filtering games.
+- Don't include spirit comments if they are not enabled.
+
 ### 1.8.2
 - Add live game icon to bracket and crossover game links.
 

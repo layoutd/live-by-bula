@@ -158,6 +158,9 @@ Please reach out (live@beachultimate.org) for more details.
 
 ## 📅 Changelog
 
+### 1.8.5
+- Fallback to season name in meta tags if tournament name is not set in the admin interface.
+
 ### 1.8.4
 - Fix field order when grouping by field in games table.
 - Fix division order when grouping by division or division+pool in games table.

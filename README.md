@@ -158,13 +158,18 @@ Please reach out (live@beachultimate.org) for more details.
 
 ## 📅 Changelog
 
+### 1.8.6
+- Use configured App Title (suffix) in meta tags.
+- Allow admin access in maintenance mode.
+- Redirect browsing of /live/ directory to root.
+
 ### 1.8.5
 - Fallback to season name in meta tags if tournament name is not set in the admin interface.
 
 ### 1.8.4
 - Fix field order when grouping by field in games table.
 - Fix division order when grouping by division or division+pool in games table.
-- Add lower margin to top level tabs in two level tab navigation (for when they wrap)
+- Add lower margin to top level tabs in two level tab navigation (for when they wrap).
 
 ### 1.8.3
 - Add a persistent division preference for more consistent navigation.

@@ -158,6 +158,11 @@ Please reach out (live@beachultimate.org) for more details.
 
 ## 📅 Changelog
 
+### 1.8.4
+- Fix field order when grouping by field in games table.
+- Fix division order when grouping by division or division+pool in games table.
+- Add lower margin to top level tabs in two level tab navigation (for when they wrap)
+
 ### 1.8.3
 - Add a persistent division preference for more consistent navigation.
 - Always update to full URL on spirit and stats pages.

@@ -158,6 +158,14 @@ Please reach out (live@beachultimate.org) for more details.
 
 ## 📅 Changelog
 
+### 1.9.1
+- Fix persistent team swap in games tables after viewing a team.
+- Use more accurate flag hex values for game view team colors.
+- Update heartbeat cache after isntallation from GitHub.
+- Make single team and game tabs URL friendly.
+- Add preview tabs for scheduled games.
+- Use field ID to sort live games for header live game icon.
+
 ### 1.9.0
 - Improved team static URL SEO and meta tags.
 - Improved server-side cache management (atomic updates, lock file management).

@@ -158,6 +158,14 @@ Please reach out (live@beachultimate.org) for more details.
 
 ## 📅 Changelog
 
+### 1.9.0
+- Improved team static URL SEO and meta tags.
+- Improved server-side cache management (atomic updates, lock file management).
+- Add stale-while-revalidate behavior to API.
+- Rename caching configuration variables for clarity.
+- Remove extra HEAD requests.
+- Use flag colors for team colors in game view.
+
 ### 1.8.6
 - Use configured App Title (suffix) in meta tags.
 - Allow admin access in maintenance mode.

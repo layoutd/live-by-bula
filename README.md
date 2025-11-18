@@ -158,6 +158,12 @@ Please reach out (live@beachultimate.org) for more details.
 
 ## 📅 Changelog
 
+### 1.9.2
+- Optimize voting table generation query.
+- Add optional scoreboard vote share doughnut charts for scheduled games.
+- Add section toggles to admin interface.
+- Add TV screen configuration interface.
+
 ### 1.9.1
 - Fix persistent team swap in games tables after viewing a team.
 - Use more accurate flag hex values for game view team colors.

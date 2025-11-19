@@ -158,6 +158,10 @@ Please reach out (live@beachultimate.org) for more details.
 
 ## 📅 Changelog
 
+### 1.9.3
+- Fix voting doughnut chart for dark mode.
+- Show played games and progress in tournament header.
+
 ### 1.9.2
 - Optimize voting table generation query.
 - Add optional scoreboard vote share doughnut charts for scheduled games.

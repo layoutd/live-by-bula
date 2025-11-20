@@ -158,6 +158,11 @@ Please reach out (live@beachultimate.org) for more details.
 
 ## 📅 Changelog
 
+### 1.9.4
+- Tweak the tournament header number box sizes and content.
+- Add caching for voting results.
+- Add cache lifetime modifier in admin interface (games and stats).
+
 ### 1.9.3
 - Fix voting doughnut chart for dark mode.
 - Show played games and progress in tournament header.

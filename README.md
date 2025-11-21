@@ -158,6 +158,9 @@ Please reach out (live@beachultimate.org) for more details.
 
 ## 📅 Changelog
 
+### 1.9.8
+- Fix last goal and game event retrieval for scoreboard.
+
 ### 1.9.7
 - Make standings pool tables responsive in see all view.
 

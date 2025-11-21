@@ -158,6 +158,9 @@ Please reach out (live@beachultimate.org) for more details.
 
 ## 📅 Changelog
 
+### 1.9.6
+- Fix GitHub release script to update heartbeat version and config correctly.
+
 ### 1.9.5
 - Show game division in compact scoreboard view with or without live indicator.
 - Show streamed games first in current games scoreboard.

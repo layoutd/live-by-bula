@@ -158,6 +158,9 @@ Please reach out (live@beachultimate.org) for more details.
 
 ## 📅 Changelog
 
+### 1.9.10
+- Fix undefined scores on spirt tab.
+
 ### 1.9.9
 - Add halftime event to scoreboard last play and ensure events are displayed correctly.
 

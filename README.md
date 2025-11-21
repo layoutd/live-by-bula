@@ -158,6 +158,12 @@ Please reach out (live@beachultimate.org) for more details.
 
 ## 📅 Changelog
 
+### 1.9.5
+- Show game division in compact scoreboard view with or without live indicator.
+- Show streamed games first in current games scoreboard.
+- Improve active games query performance.
+- Make scoreboard selected tab persistent for 2 minutes.
+
 ### 1.9.4
 - Tweak the tournament header number box sizes and content.
 - Add caching for voting results.

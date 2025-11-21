@@ -158,6 +158,9 @@ Please reach out (live@beachultimate.org) for more details.
 
 ## 📅 Changelog
 
+### 1.9.12
+- Fix error when no active games are found.
+
 ### 1.9.11
 - Order final placements and divisions dropdown by `ordering` field.
 - Show a placeholder if the final placement is not available.

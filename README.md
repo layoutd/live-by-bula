@@ -158,6 +158,10 @@ Please reach out (live@beachultimate.org) for more details.
 
 ## 📅 Changelog
 
+### 1.9.11
+- Order final placements and divisions dropdown by `ordering` field.
+- Show a placeholder if the final placement is not available.
+
 ### 1.9.10
 - Fix undefined scores on spirt tab.
 

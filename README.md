@@ -158,6 +158,9 @@ Please reach out (live@beachultimate.org) for more details.
 
 ## 📅 Changelog
 
+### 1.9.14
+- Always show division name in compact scoreboard view, even if the game have live streaming icon.
+
 ### 1.9.13
 - Remove debug games condition from game query.
 - Ensure correct team names are used in the single game URL.

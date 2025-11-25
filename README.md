@@ -158,6 +158,11 @@ Please reach out (live@beachultimate.org) for more details.
 
 ## 📅 Changelog
 
+### 1.9.13
+- Remove debug games condition from game query.
+- Ensure correct team names are used in the single game URL.
+- Use correct pool slug in standings page submenus.
+
 ### 1.9.12
 - Fix error when no active games are found.
 

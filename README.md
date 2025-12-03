@@ -158,6 +158,10 @@ Please reach out (live@beachultimate.org) for more details.
 
 ## 📅 Changelog
 
+### 1.9.15
+- Highlight the correct pool in the standings page submenus.
+- Make navigation buttons hover effect match the primary color.
+
 ### 1.9.14
 - Always show division name in compact scoreboard view, even if the game have live streaming icon.
 

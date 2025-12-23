@@ -158,6 +158,11 @@ Please reach out (live@beachultimate.org) for more details.
 
 ## 📅 Changelog
 
+### 1.9.16
+- Improve subdirectory support.
+- Fix TOURNAMENT_INFO_URL handling in admin interface.
+- Get version from heartbeat file if package version is not available.
+
 ### 1.9.15
 - Highlight the correct pool in the standings page submenus.
 - Make navigation buttons hover effect match the primary color.

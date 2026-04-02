@@ -4,6 +4,28 @@ This guide explains how to set up and configure the [Live! by BULA](https://gith
 
 📣 Please keep in mind that, before using Live! by BULA, you must sign the [Terms of Use](https://github.com/layoutd/live-by-bula/blob/main/Terms%20of%20Use%20-%20Live%20by%20BULA.pdf) and send the signed copy to live@beachultimate.org.
 
+## 🚀 Fresh Installation (UltiOrganizer + Live! by BULA)
+
+Starting with release **1.9.16**, the GitHub releases page also includes a combined package — `uo-with-live-<VERSION>.zip` — that bundles a full copy of **UltiOrganizer** together with **Live! by BULA**. This is the easiest way to get started if you don't already have UltiOrganizer installed.
+
+### 1. Download the combined package
+
+Download the `uo-with-live-<VERSION>.zip` asset from the [latest release](https://github.com/layoutd/live-by-bula/releases/latest) and extract it into your web root.
+
+### 2. Install UltiOrganizer
+
+Visit `/install.php` in your browser to run the UltiOrganizer installer and set up a fresh database.
+
+### 3. Configure an event
+
+Log in to the UltiOrganizer admin interface and configure your tournament/event (seasons, divisions, teams, games, etc.) as usual.
+
+### 4. Install and configure Live! by BULA
+
+Follow the [**⚙️ Installation Steps**](#️-installation-steps) below (starting at step 2 — the Live! by BULA files are already included in the combined package, so you can skip step 0 and step 1).
+
+---
+
 ## ⚙️ Installation Steps
 
 ### 0. Download the latest release

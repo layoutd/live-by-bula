@@ -4,6 +4,28 @@ This guide explains how to set up and configure the [Live! by BULA](https://gith
 
 📣 Please keep in mind that, before using Live! by BULA, you must sign the [Terms of Use](https://github.com/layoutd/live-by-bula/blob/main/Terms%20of%20Use%20-%20Live%20by%20BULA.pdf) and send the signed copy to live@beachultimate.org.
 
+## 🚀 Fresh Installation (UltiOrganizer + Live! by BULA)
+
+Starting with release **1.9.16**, the GitHub releases page also includes a combined package — `uo-with-live-<VERSION>.zip` — that bundles a full copy of **UltiOrganizer** together with **Live! by BULA**. This is the easiest way to get started if you don't already have UltiOrganizer installed.
+
+### 1. Download the combined package
+
+Download the `uo-with-live-<VERSION>.zip` asset from the [latest release](https://github.com/layoutd/live-by-bula/releases/latest) and extract it into your web root.
+
+### 2. Install UltiOrganizer
+
+Visit `/install.php` in your browser to run the UltiOrganizer installer and set up a fresh database.
+
+### 3. Configure an event
+
+Log in to the UltiOrganizer admin interface and configure your tournament/event (seasons, divisions, teams, games, etc.) as usual.
+
+### 4. Install and configure Live! by BULA
+
+Follow the [**⚙️ Installation Steps**](#️-installation-steps) below (starting at step 2 — the Live! by BULA files are already included in the combined package, so you can skip step 0 and step 1).
+
+---
+
 ## ⚙️ Installation Steps
 
 ### 0. Download the latest release
@@ -96,6 +118,28 @@ location / {
 }
 ```
 
+Also deny direct access to writable Live configuration files while keeping logo
+assets in `live/conf/logos/` public. The case-insensitive regex matches
+`LocalConfig.PHP`, `Local-Config.json`, etc. and also blocks common editor
+backups (`*.bak`, `*.swp`, `*~`, `.DS_Store`) that may sit alongside the live
+config on a writable filesystem:
+
+```
+location ~* "^/live/conf/(localconfig\.php|local-config\.json)$" {
+   deny all;
+}
+
+location ~* "^/live/conf/[^/]*(\.(bak|swp|swo|orig|tmp|old|save)|~|\.ds_store)$" {
+   deny all;
+}
+```
+
+If UltiOrganizer is installed in a subdirectory, prepend that path to both
+regex prefixes, e.g. `^/ultiorganizer/live/conf/…`. If you keep a broader
+`location ^~ /ultiorganizer/` block, place these regex locations above it or
+duplicate the rules inside that prefix block — nginx exact-match and prefix
+locations take precedence over regex unless ordered correctly.
+
 To route requests to Live! by BULA when UltiOrganizer is installed in an subdirectory, like `ultiorganizer/`, you may need to add something like the following to your nginx configuration:
 
 ```
@@ -157,6 +201,63 @@ Please reach out (live@beachultimate.org) for more details.
 
 
 ## 📅 Changelog
+
+### 2.0.0
+- Refresh live game data as changes occur so scores update sooner.
+- Recommend cache warmer settings based on tournament size.
+- Add a player scoresheet modal with season totals and a day-grouped play-by-play history.
+- Keep placeholder team names out of the games team filter.
+- Link team names in the spirit and player stats tables to the matching team page tab.
+- Link the team page header boxes to their matching tab.
+- Spell out the active filters in the games list heading.
+- Keep scoreboard labels readable while scrolling.
+- Add selectable visual themes.
+- Improve mobile drawer, modal, and preferences controls.
+- Keep active header indicators within the navigation bar.
+- Keep game filters visible and usable on smaller screens.
+- Keep segmented controls visually connected.
+- Fix the winner highlight in the games list marking the wrong team.
+- Remove a stray option from the games table group-by menu.
+- Show the game result in team spirit tables and player game history.
+- Fix team page spirit scores and average counting games with no spirit score.
+- Harden public configuration and diagnostic output.
+- Stack the tournament title below the logo on smaller screens.
+- Add an active players row to the game preview team comparison.
+- Hide spirit scores until both teams have submitted.
+- Include carried results in standings data and pool-filtered game lists.
+- Voting: better admin, reduced DB load, IPv6 support.
+- Improve the bracket standings view.
+- Show pool and bracket headings in the standings See All view.
+- Preload country flags so they no longer reload when navigating between screens.
+- Make the home page overview boxes clickable.
+- Clear server cache now also removes stale lock and temp files.
+- Fix config changes (e.g. date display) not taking effect until a server cache clear.
+- Harden API caching.
+- Add `DEFAULT_LANDING_PATH` config.
+- Harden page metadata output.
+- Harden season configuration handling.
+- Harden maintenance mode.
+- Harden local configuration access.
+- Harden response headers.
+- Harden initial setup.
+- Preselect the season during setup when only one is available.
+- Harden admin authentication.
+- Strengthen vote submission integrity.
+- Harden admin form submissions.
+- Auto-inject `enable-live.php` into `index.php` after `session_start()` during setup initialization.
+- Add `DATE_DISPLAY` config: set to `day-only` to show weekday names instead of full dates (useful for short tournaments).
+- Fix voting CORS policy that blocked requests in production (was hardcoded to localhost only).
+- Divide the teams-by-country tabs into evenly balanced groups, with the number of groups scaling to the country count.
+- Rename the single game margin chart to Score Difference and show the running score in its tooltip.
+- Fix coming soon page logo path.
+- Add optional traffic-driven cache warming to keep live data fresh and flatten server load under heavy tournament traffic (`ENABLE_CACHE_WARMER`).
+- Dramatically reduce database load when generating game detail and team data.
+- Add admin cache-warmer controls: run a larger batch on demand and keep the warmer running from an open admin tab even with no visitor traffic.
+- Harden cache administration and warming.
+- Sort the Games page fields filter in natural order.
+- Expand a player's row on the team stats page to show their season goal/assist history.
+- Make player names clickable in stats and roster tables to open their goal/assist history.
+- Show current-game contributions in player histories.
 
 ### 1.9.17
 - Tighten team API response.

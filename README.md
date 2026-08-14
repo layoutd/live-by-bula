@@ -124,7 +124,7 @@ RewriteRule ^(.*)$ index.php?$1 [QSA,L]
 ### 4b. Configure nginx (Optional)
 
 If you're using nginx, add the routing block below and the locations from the
-packaged [`live/nginx.conf.example`](nginx.conf.example) file to the server block
+packaged [`live/conf/nginx.conf.example`](conf/nginx.conf.example) file to the server block
 that serves UltiOrganizer. The example keeps nginx behavior aligned with the
 Apache rules shipped in `live/conf/.htaccess` and `live/data/.htaccess`.
 
@@ -274,6 +274,7 @@ For the complete release history, see [CHANGELOG.md](CHANGELOG.md).
 - Document the v3 API changes for external integrations.
 - Keep custom theme colors when switching themes in the admin.
 - Fix visual themes not applying their intended density, lines, and spacing.
+- Trim development files from the release package.
 
 ### 2.0.0
 - Refresh live game data as changes occur so scores update sooner.

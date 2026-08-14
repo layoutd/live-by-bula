@@ -70,6 +70,7 @@ PR authors and agents:
 - Document the v3 API changes for external integrations.
 - Keep custom theme colors when switching themes in the admin.
 - Fix visual themes not applying their intended density, lines, and spacing.
+- Trim development files from the release package.
 
 ### 2.0.0
 - Refresh live game data as changes occur so scores update sooner.

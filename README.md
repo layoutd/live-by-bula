@@ -1,12 +1,14 @@
 # Live! by BULA – Installation and Configuration Guide
 
-This guide explains how to set up and configure the [Live! by BULA](https://github.com/layoutd/live-by-bula/) application within an existing [UltiOrganizer](https://github.com/ultiorganizer/ultiorganizer) install.
+This guide explains how to set up and configure the [Live! by BULA](https://github.com/layoutd/live-by-bula/) application within an existing [UltiOrganizer](https://github.com/ktolonen/ultiorganizer) install.
+
+Live! v3 requires UltiOrganizer 4, PHP 8.3 or newer, and MariaDB 10.11 or newer. Live! v2.x remains the release line for the legacy UltiOrganizer fork.
 
 📣 Please keep in mind that, before using Live! by BULA, you must sign the [Terms of Use](https://github.com/layoutd/live-by-bula/blob/main/Terms%20of%20Use%20-%20Live%20by%20BULA.pdf) and send the signed copy to live@beachultimate.org.
 
 ## 🚀 Fresh Installation (UltiOrganizer + Live! by BULA)
 
-Starting with release **1.9.16**, the GitHub releases page also includes a combined package — `uo-with-live-<VERSION>.zip` — that bundles a full copy of **UltiOrganizer** together with **Live! by BULA**. This is the easiest way to get started if you don't already have UltiOrganizer installed.
+The release page includes a combined package - `uo-with-live-<VERSION>.zip` - that bundles the supported UltiOrganizer 4 runtime together with Live! by BULA. This is the easiest way to get started if you don't already have UltiOrganizer installed.
 
 ### 1. Download the combined package
 
@@ -14,7 +16,7 @@ Download the `uo-with-live-<VERSION>.zip` asset from the [latest release](https:
 
 ### 2. Install UltiOrganizer
 
-Visit `/install.php` in your browser to run the UltiOrganizer installer and set up a fresh database.
+Visit `/install.php` in your browser to run the UltiOrganizer installer and set up a fresh database. Delete `install.php` immediately after the installer completes, before serving normal application requests.
 
 ### 3. Configure an event
 
@@ -22,7 +24,23 @@ Log in to the UltiOrganizer admin interface and configure your tournament/event 
 
 ### 4. Install and configure Live! by BULA
 
-Follow the [**⚙️ Installation Steps**](#️-installation-steps) below (starting at step 2 — the Live! by BULA files are already included in the combined package, so you can skip step 0 and step 1).
+Follow the [**⚙️ Installation Steps**](#️-installation-steps) below (starting at step 2 - the Live! by BULA files are already included in the combined package, so you can skip step 0 and step 1).
+
+---
+
+## Version compatibility
+
+Live! v2.x and v3 are separate compatibility lines:
+
+- Keep Live! v2.x on installations that use the legacy BULA/WFDF UltiOrganizer fork.
+- Use Live! v3 with UltiOrganizer 4 installations.
+- Live! v3 does not support an in-place upgrade from a Live! v2 or legacy-UO database. Do not replace a v2 runtime with v3 and rely on UltiOrganizer's bundled upgrade runner to convert the installation.
+
+For a new v3 site, install UltiOrganizer 4 against a fresh database and then configure Live! v3. For a site that already runs UO 4, back up its database, `conf/config.inc.php`, `images/uploads/`, customization, and Live! files before deploying v3. The UO 4 front controller already contains the conditional Live! hook, so no include injection is required.
+
+Moving tournament data from legacy UO to UO 4 is a separate, unsupported data-migration project. Complete and validate it independently before installing Live! v3; keep the legacy site on Live! v2.x until the UO 4 environment is ready. See the [Live! v3 and UO 4 compatibility guide](../UO4-COMPATIBILITY.md) for the full support boundary and validation checklist.
+
+If external applications consume the Live! JSON API (scoreboards, overlays, stats tools), review the [Live! API changes in v3](docs/api-v3-changes.md) before upgrading — v3 changes the supported endpoint URL and several response formats.
 
 ---
 
@@ -53,6 +71,9 @@ Unzip the release package in the root directory of your UltiOrganizer install. I
 ├── ...
 ```
 
+The standalone archive contains only this `live/` directory. It does not
+replace or patch any UltiOrganizer application files.
+
 ### 2. Configure the Application
 
 1. Navigate to your UltiOrganizer site and change the `?view=xx` to `?view=live/index` (e.g. `http://your-site.org/?view=live/index`)
@@ -67,31 +88,23 @@ Unzip the release package in the root directory of your UltiOrganizer install. I
 
 ### 3. Make Live! by BULA the default page
 
-1. Include the `enable-live.php` file in the main `/index.php` file:
+UltiOrganizer 4 automatically loads `live/enable-live.php` when the Live! package is present. Leave the bundled conditional hook in `index.php` unchanged.
 
-   ```php
-   // Include Live! by BULA
-   include_once __DIR__ . '/live/enable-live.php';
-   ```
+Update the `DEFAULT_TO_LIVE` setting to `true` in the admin interface.
 
-   The correct placement is after the session has been started:
+- This will make Live! by BULA the default page when the user visits the site.
+- You can still see the UltiOrganizer login page by visiting `http://your-site.org/?view=login`.
+- With this setting disabled, you can still access the Live! by BULA interface by visiting `http://your-site.org/?view=live/index`.
 
-   ```php
-   session_name(UO_SESSION_NAME);      // <-- Line already exists
-   session_start();                    // <-- Line already exists
+### 4a. Configure .htaccess
 
-   // Include Live! by BULA
-   include_once __DIR__ . '/live/enable-live.php';   // <-- ADD THIS LINE
-   ```
-
-2. Update the `DEFAULT_TO_LIVE` setting to `true` in the admin interface.
-   - This will make Live! by BULA the default page when the user visits the site.
-   - You can still see the UltiOrganizer login page by visiting `http://your-site.org/?view=login`.
-   - With this setting disabled, you can still access the Live! by BULA interface by visiting `http://your-site.org/?view=live/index`.
-
-### 4a. Configure .htaccess (Optional)
-
-For proper URL routing, add these rules to your .htaccess file (UltiOrganizer should already have these rules). If the app is installed in a subdirectory, like `/ultiorganizer/`, uncomment the `RewriteBase` line.
+Query-string routes such as `?view=live/index` work without changing
+UltiOrganizer's `.htaccess`, but reloading or sharing a Live! page link uses a
+path-style URL and fails without URL rewriting. Add these rules to your
+deployment configuration; the Live! admin page shows a warning while they are
+missing, and the combined UO + Live! package ships with them already appended
+to its `.htaccess`. If the app is installed in a subdirectory, like
+`/ultiorganizer/`, uncomment the `RewriteBase` line.
 
 ```
 # Enable mod_rewrite if not already enabled
@@ -110,7 +123,10 @@ RewriteRule ^(.*)$ index.php?$1 [QSA,L]
 
 ### 4b. Configure nginx (Optional)
 
-If you're using nginx, you can add the following to your nginx configuration:
+If you're using nginx, add the routing block below and the locations from the
+packaged [`live/nginx.conf.example`](nginx.conf.example) file to the server block
+that serves UltiOrganizer. The example keeps nginx behavior aligned with the
+Apache rules shipped in `live/conf/.htaccess` and `live/data/.htaccess`.
 
 ```
 location / {
@@ -118,29 +134,17 @@ location / {
 }
 ```
 
-Also deny direct access to writable Live configuration files while keeping logo
-assets in `live/conf/logos/` public. The case-insensitive regex matches
-`LocalConfig.PHP`, `Local-Config.json`, etc. and also blocks common editor
-backups (`*.bak`, `*.swp`, `*~`, `.DS_Store`) that may sit alongside the live
-config on a writable filesystem:
+The packaged example denies direct access to writable configuration and setup
+files while keeping `live/conf/logos/` public. It also adds CORS and OPTIONS
+handling to static JSON and prevents browsers from retaining an old heartbeat.
 
-```
-location ~* "^/live/conf/(localconfig\.php|local-config\.json)$" {
-   deny all;
-}
+If UltiOrganizer is installed in a subdirectory, prepend that path to every
+location in the example, e.g. `/ultiorganizer/live/`. If you keep a broader
+`location ^~ /ultiorganizer/` block, place these locations above it or duplicate
+the rules inside that prefix block. nginx exact-match and prefix locations take
+precedence over regex unless ordered correctly.
 
-location ~* "^/live/conf/[^/]*(\.(bak|swp|swo|orig|tmp|old|save)|~|\.ds_store)$" {
-   deny all;
-}
-```
-
-If UltiOrganizer is installed in a subdirectory, prepend that path to both
-regex prefixes, e.g. `^/ultiorganizer/live/conf/…`. If you keep a broader
-`location ^~ /ultiorganizer/` block, place these regex locations above it or
-duplicate the rules inside that prefix block — nginx exact-match and prefix
-locations take precedence over regex unless ordered correctly.
-
-To route requests to Live! by BULA when UltiOrganizer is installed in an subdirectory, like `ultiorganizer/`, you may need to add something like the following to your nginx configuration:
+To route requests to Live! by BULA when UltiOrganizer is installed in a subdirectory, like `ultiorganizer/`, you may need to add something like the following to your nginx configuration:
 
 ```
 location ^~ /ultiorganizer/ {
@@ -171,13 +175,16 @@ Select the number of the version to install and overwrite all files.
 ## 🔧 Troubleshooting
 
 - If you encounter issues with the admin interface, you can manually update the configuration by editing the `local-config.json` file in the `live/conf/` directory.
-- Ensure the `enable-live.php` file is included in the correct location in your main `index.php` to make Live! by BULA the default page.
+- Ensure you are using the UO 4 `index.php` with its conditional Live! hook; no manual include should be added.
 - Check file permissions for data directories
 - If the admin interface shows no configuration options after login, check that the `conf/` directory is writable
 
 ## 📚 Additional Resources
 
 For more information on configuration options, refer to the comments in the admin interface.
+
+- [Live! API changes in v3](docs/api-v3-changes.md) – request and response contract changes for external API consumers.
+- [Live! v3 and UO 4 compatibility guide](../UO4-COMPATIBILITY.md) – support boundary and validation checklist.
 
 ## 🔮 Tentative roadmap
 - Global error handling.
@@ -200,7 +207,73 @@ Please reach out (live@beachultimate.org) for more details.
 
 
 
-## 📅 Changelog
+## Recent releases
+
+For the complete release history, see [CHANGELOG.md](CHANGELOG.md).
+
+<!-- BEGIN RECENT RELEASES -->
+
+### 3.0.0
+- Make stat header boxes fully clickable.
+- Organize Live administration settings into remembered tabs.
+- Add browser regression coverage for key routes, themes, TV screens, and Live admin.
+- Require UltiOrganizer 4.0.
+- Keep in-progress pool standings styling consistent.
+- Harden fresh-install database checks.
+- Verify the complete packaged UltiOrganizer runtime.
+- Reject malformed admin configuration JSON.
+- Keep empty TV game sections empty.
+- Resolve TV logos from the UltiOrganizer URL.
+- Support the full UltiOrganizer identifier range in voting.
+- Keep team spirit totals limited to completed games.
+- Update voting setup guidance.
+- Clarify maintenance splash access.
+- Keep advanced admin settings within mobile screens.
+- Keep dense chart labels readable on mobile.
+- Add a local tournament database switcher for development.
+- Allow player scoresheets to show recent games first.
+- Show team flags and country details only for international tournaments.
+- Let viewers display dates as weekday names only.
+- Add name filters to long team and player lists.
+- Show game outcomes with consistent win and loss badges.
+- Show first-half and second-half scoring on games with a recorded halftime.
+- Harden vote request handling.
+- Show each team's progress through tournament pools and brackets.
+- Show how team goals and assists are distributed across players.
+- Clarify offensive hold and defensive break statistics and chart them per team.
+- Keep tournament switching and standings aligned with the selected event.
+- Add a clear button to the team and player name filters.
+- Color a team's own games list by win and loss.
+- Clarify the player history and game timeline order toggle wording.
+- Keep games page filters when navigating back.
+- Tidy the spirit score tables with abbreviated category headers, a legend, and collapsible comments.
+- Harden Live admin and setup redirect handling.
+- Harden setup configuration handling.
+- Harden stream link and embed handling.
+- Improve the score difference chart axis labels.
+- Add more game team comparison metrics.
+- Combine the holds and scoring by half charts into one game summary chart.
+- Scroll to the selected player when opening a team stats link.
+- Only note carried-over results on standings pages that actually have them.
+- Show each team's placement at every tournament path stop.
+- Fix crossover standings layout.
+- Tidy the Live admin panel layout.
+- Preserve drop-in installation compatibility with unmodified UltiOrganizer 4 sites.
+- Update documentation to match the current system configuration.
+- Default root installations to the correct URL prefix during setup.
+- Load the classic UltiOrganizer page on an unconfigured root instead of looping on Live setup redirects.
+- Harden Nginx deployment defaults.
+- Return consistent JSON content types from the Live API.
+- Include all public interface assets in release packages.
+- Show the assists distribution before goals on the team players tab.
+- Show games in progress with a live indicator instead of a win or loss badge.
+- Show the placement each crossover game decides on standings pages.
+- Label non-placement games by round name instead of internal game codes.
+- Fix the Open Live! button on the admin page opening a 404.
+- Keep Live pages working when the data cache is cold or missing.
+- Document the v3 API changes for external integrations.
+- Keep custom theme colors when switching themes in the admin.
+- Fix visual themes not applying their intended density, lines, and spacing.
 
 ### 2.0.0
 - Refresh live game data as changes occur so scores update sooner.
@@ -276,234 +349,5 @@ Please reach out (live@beachultimate.org) for more details.
 - Highlight the correct pool in the standings page submenus.
 - Make navigation buttons hover effect match the primary color.
 
-### 1.9.14
-- Always show division name in compact scoreboard view, even if the game have live streaming icon.
 
-### 1.9.13
-- Remove debug games condition from game query.
-- Ensure correct team names are used in the single game URL.
-- Use correct pool slug in standings page submenus.
-
-### 1.9.12
-- Fix error when no active games are found.
-
-### 1.9.11
-- Order final placements and divisions dropdown by `ordering` field.
-- Show a placeholder if the final placement is not available.
-
-### 1.9.10
-- Fix undefined scores on spirt tab.
-
-### 1.9.9
-- Add halftime event to scoreboard last play and ensure events are displayed correctly.
-
-### 1.9.8
-- Fix last goal and game event retrieval for scoreboard.
-
-### 1.9.7
-- Make standings pool tables responsive in see all view.
-
-### 1.9.6
-- Fix GitHub release script to update heartbeat version and config correctly.
-
-### 1.9.5
-- Show game division in compact scoreboard view with or without live indicator.
-- Show streamed games first in current games scoreboard.
-- Improve active games query performance.
-- Make scoreboard selected tab persistent for 2 minutes.
-
-### 1.9.4
-- Tweak the tournament header number box sizes and content.
-- Add caching for voting results.
-- Add cache lifetime modifier in admin interface (games and stats).
-
-### 1.9.3
-- Fix voting doughnut chart for dark mode.
-- Show played games and progress in tournament header.
-
-### 1.9.2
-- Optimize voting table generation query.
-- Add optional scoreboard vote share doughnut charts for scheduled games.
-- Add section toggles to admin interface.
-- Add TV screen configuration interface.
-
-### 1.9.1
-- Fix persistent team swap in games tables after viewing a team.
-- Use more accurate flag hex values for game view team colors.
-- Update heartbeat cache after isntallation from GitHub.
-- Make single team and game tabs URL friendly.
-- Add preview tabs for scheduled games.
-- Use field ID to sort live games for header live game icon.
-
-### 1.9.0
-- Improved team static URL SEO and meta tags.
-- Improved server-side cache management (atomic updates, lock file management).
-- Add stale-while-revalidate behavior to API.
-- Rename caching configuration variables for clarity.
-- Remove extra HEAD requests.
-- Use flag colors for team colors in game view.
-
-### 1.8.6
-- Use configured App Title (suffix) in meta tags.
-- Allow admin access in maintenance mode.
-- Redirect browsing of /live/ directory to root.
-
-### 1.8.5
-- Fallback to season name in meta tags if tournament name is not set in the admin interface.
-
-### 1.8.4
-- Fix field order when grouping by field in games table.
-- Fix division order when grouping by division or division+pool in games table.
-- Add lower margin to top level tabs in two level tab navigation (for when they wrap).
-
-### 1.8.3
-- Add a persistent division preference for more consistent navigation.
-- Always update to full URL on spirit and stats pages.
-- Fix annoying tiny zoom on iOS when filtering games.
-- Don't include spirit comments if they are not enabled.
-
-### 1.8.2
-- Add live game icon to bracket and crossover game links.
-
-### 1.8.1
-- Better meta image route handling.
-- Bracket game link replacements are restricted to only look in games for the current bracket phase.
-- Improve charts text colors for dark mode.
-
-### 1.8.0
-- Clarify initial voting configuration.
-- Improve filter and grouping compatibility in games table.
-- Improve bracket view score updates.
-- Add tournament logo to loading splash screen.
-- Adjust recommended social share image size.
-
-### 1.7.9
-- Update feedback and BULA contact information in footer.
-- Add additional contact emails configuration field.
-- Spirit menu and page respect UO admin spirit configuration.
-- Reinstate 404 image.
-
-### 1.7.8
-- Cache and UO admin buttons in admin panel.
-- Flag display logic for domestic tournaments.
-- Fix team page errors when tournament spirit is disabled.
-
-### 1.7.7
-- Youtube and SolidSport videos embed, all other URLs open a new URL.
-- Installation and initialization improvements.
-- Error fix for games with no goals.
-- Additional SEO data.
-- Season-specific static cache values.
-- Remove unused media/logos directory.
-
-### 1.7.6
-- Fix heartbeat file generation.
-- Pass more qualified URLs in the API config.
-
-### 1.7.5
-- Fix scoreboard game links for subdirectory installations.
-
-### 1.7.4
-- Fix scoreboard game links.
-
-### 1.7.3
-- Improved subdirectory support.
-- Improved client-side caching.
-
-### 1.7.2
-- Add season selection to admin initialization.
-- Improve page titles, URLs and SEO, especially for subdirectory installations.
-
-### 1.7.1
-- Add final placements SEO links.
-
-### 1.7.0
-- Add SEO details and links when pages are loaded.
-
-### 1.6.3
-- Make sure team names in game previews are clickable.
-
-### 1.6.2
-- Make game previews clickable on home scoreboard.
-
-### 1.6.1
-- Add package update script.
-- Animate scoreboard scroll to the right.
-
-### 1.6.0
-- Better share information in meta description.
-- Remove view parameter from URL when not needed.
-- Add team pictures directly to the package.
-- Add video size toggle button.
-
-### 1.5.2
-- Fix missing points icon in tournament header.
-- Fix flickering video position on desktop.
-- Fix group by filter in game table deep link.
-- Fix games table pagination for grouped games.
-
-### 1.5.1
-- Tournament header remembers expansion state.
-- Custom tournament location text.
-- Fix grouped games sorting by time.
-- Default to grouped games by time.
-
-### 1.5.0
-- Remove visible view parameter from URL when default to live is enabled.
-- Include Terms of Use in package.
-
-### 1.4.3
-- Add voting endpoint.
-- Improve static page title for SEO.
-
-### 1.4.2.1
-- Fix for field name sorting for fields > 9.
-
-### 1.4.2
-- Get maintenance page working.
-- Allow UO login bypass.
-
-### 1.4.1
-- Fixes for tournaments with missing timeslots.
-- Fixes in admin panel paths.
-- Customizable colors.
-- More robust standings table parsing.
-
-### 1.4.0
-- Added new admin interface for easier configuration.
-- Improved initial setup experience.
-- Better field name handling.
-- Updated documentation.
-
-### 1.3.0
-- Smoother config handling.
-- Config admin page.
-
-### 1.2.2
-- Simplify config handling.
-- Other small changes.
-- Revert missing font files.
-- Include footer link to beachultimate.org.
-
-### 1.2.1
-- Reduce package size by removing unused assets (~7MB to ~3MB).
-
-### 1.2.0
-- Update to support subdirectory placement of Live! by BULA.
-- First public beta release of Live! by BULA (for EBUCC 2025).
-
-### 1.1.5
-- Reduce package size by removing unused files.
-- Move configuration to API.
-
-### 1.1.0
-- Update to support WGGMBUCC 2024.
-
-### 1.0.0
-- Initial release for WBUCC 2024.
-
-### 0.5.0
-- Full rewrite of Live! by BULA.
-
-#### 0.1.0
-- Trial release for Portuguese Championship 2024.
+<!-- END RECENT RELEASES -->

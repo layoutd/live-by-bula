@@ -213,6 +213,32 @@ For the complete release history, see [CHANGELOG.md](CHANGELOG.md).
 
 <!-- BEGIN RECENT RELEASES -->
 
+### 3.0.1
+- Lighten the error pages and drop their large background images.
+- Keep local configuration intact when updating from GitHub.
+- Show the number of fields in the home page overview stats.
+- Fix missing spacing between pool filter buttons on the Pools & Brackets page in some themes.
+- Base the home scoreboard's current and recent lists on each game's own scheduled length, and sort in-progress games first.
+- Match UltiOrganizer pool visibility in the standings navigation.
+- Keep game names visible in later crossover rounds so placeholder team names stay meaningful, and link them back to the pool they'll come from when known.
+- Keep the page scroll position when single game charts refresh.
+- Keep the scroll position when single team stats charts refresh.
+- Line up the header live stream link with the navigation links.
+- Show live stream links consistently wherever games are listed.
+- Align the game status and division with the team names in the compact mobile scoreboard.
+- Fix a stray rule above the scoreboard games in non-classic themes.
+- Include a game in progress in a team's stats.
+- Fix the player profile link on installs served from a subdirectory.
+- Show event times on the dashboard last play and align the single game scoreboard team column.
+- Give the single-game charts more room on phones so the bar labels stop overlapping.
+- Restore the previous scroll position when navigating back to a page.
+- Rename the tournament path section to Tournament Progression and hide it, along with scoring distribution, when a team has nothing to show yet.
+- Show a forfeit's final score under the Final column on the game page.
+- Keep the page position when switching tabs, and left-align the score difference chart.
+- Keep team names on the text font in the Data-Dense Pro theme.
+- Reorder the home page overview boxes so the counts read in a natural order.
+- Fix the back button after opening a game from the scoreboard, and keep game names in crossover standings.
+
 ### 3.0.0
 - Make stat header boxes fully clickable.
 - Organize Live administration settings into remembered tabs.
@@ -345,10 +371,6 @@ For the complete release history, see [CHANGELOG.md](CHANGELOG.md).
 - Improve subdirectory support.
 - Fix TOURNAMENT_INFO_URL handling in admin interface.
 - Get version from heartbeat file if package version is not available.
-
-### 1.9.15
-- Highlight the correct pool in the standings page submenus.
-- Make navigation buttons hover effect match the primary color.
 
 
 <!-- END RECENT RELEASES -->

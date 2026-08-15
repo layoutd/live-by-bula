@@ -213,6 +213,16 @@ For the complete release history, see [CHANGELOG.md](CHANGELOG.md).
 
 <!-- BEGIN RECENT RELEASES -->
 
+### 3.0.2
+- Show full team names in bracket standings on phones.
+- Fit the crossover standings to a phone screen so both teams stay visible.
+- Say "No games played" when a team has no games to list.
+- Link scheduling placeholders wherever games are listed, not just in standings.
+- Land a clicked standings placeholder on the game it comes from and mark it briefly.
+- Keep the single game box score clear of the header glow.
+- Jump straight to the top when opening a page instead of scrolling up to it.
+- Show Tournament Progression for a team still in its first pool.
+
 ### 3.0.1
 - Lighten the error pages and drop their large background images.
 - Keep local configuration intact when updating from GitHub.
@@ -366,11 +376,6 @@ For the complete release history, see [CHANGELOG.md](CHANGELOG.md).
 - Add `time_utc` field to games API response, converting game time from the season timezone to UTC.
 - Show livestream link/icon for any `islive >= 1` value.
 - Fix theme color (BG color) changes not taking effect after saving in admin.
-
-### 1.9.16
-- Improve subdirectory support.
-- Fix TOURNAMENT_INFO_URL handling in admin interface.
-- Get version from heartbeat file if package version is not available.
 
 
 <!-- END RECENT RELEASES -->

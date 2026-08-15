@@ -9,6 +9,16 @@ PR authors and agents:
 - Leave release transformation and README generation to the release script.
 -->
 
+### 3.0.2
+- Show full team names in bracket standings on phones.
+- Fit the crossover standings to a phone screen so both teams stay visible.
+- Say "No games played" when a team has no games to list.
+- Link scheduling placeholders wherever games are listed, not just in standings.
+- Land a clicked standings placeholder on the game it comes from and mark it briefly.
+- Keep the single game box score clear of the header glow.
+- Jump straight to the top when opening a page instead of scrolling up to it.
+- Show Tournament Progression for a team still in its first pool.
+
 ### 3.0.1
 - Lighten the error pages and drop their large background images.
 - Keep local configuration intact when updating from GitHub.

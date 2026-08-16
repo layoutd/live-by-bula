@@ -9,6 +9,9 @@ PR authors and agents:
 - Leave release transformation and README generation to the release script.
 -->
 
+### 3.0.3
+- Serve fresh cached API responses instead of regenerating on every request.
+
 ### 3.0.2
 - Show full team names in bracket standings on phones.
 - Fit the crossover standings to a phone screen so both teams stay visible.

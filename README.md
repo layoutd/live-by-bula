@@ -213,6 +213,9 @@ For the complete release history, see [CHANGELOG.md](CHANGELOG.md).
 
 <!-- BEGIN RECENT RELEASES -->
 
+### 3.0.3
+- Serve fresh cached API responses instead of regenerating on every request.
+
 ### 3.0.2
 - Show full team names in bracket standings on phones.
 - Fit the crossover standings to a phone screen so both teams stay visible.
@@ -368,14 +371,6 @@ For the complete release history, see [CHANGELOG.md](CHANGELOG.md).
 - Expand a player's row on the team stats page to show their season goal/assist history.
 - Make player names clickable in stats and roster tables to open their goal/assist history.
 - Show current-game contributions in player histories.
-
-### 1.9.17
-- Tighten team API response.
-- Expose `reg_id` in the `entity=teams` API response (both list and detail views).
-- Fix dark mode color inconsistency between manual dark mode and system dark mode.
-- Add `time_utc` field to games API response, converting game time from the season timezone to UTC.
-- Show livestream link/icon for any `islive >= 1` value.
-- Fix theme color (BG color) changes not taking effect after saving in admin.
 
 
 <!-- END RECENT RELEASES -->

@@ -213,6 +213,16 @@ For the complete release history, see [CHANGELOG.md](CHANGELOG.md).
 
 <!-- BEGIN RECENT RELEASES -->
 
+### 3.0.4
+- Keep the winner indicator clear of the team names on the single game page and games tables.
+- Tighten the spacing below the game progress chart.
+- Reorder the single game tabs and keep game history available for in-progress games.
+- Link bracket games where only one team is decided yet.
+- Land scheduling placeholders on their source game in unnamed rounds.
+- Link crossover games that have not been played yet.
+- Make the Tournament Progression boxes fully clickable.
+- Follow placeholder links to the game cell itself.
+
 ### 3.0.3
 - Serve fresh cached API responses instead of regenerating on every request.
 
@@ -314,63 +324,6 @@ For the complete release history, see [CHANGELOG.md](CHANGELOG.md).
 - Keep custom theme colors when switching themes in the admin.
 - Fix visual themes not applying their intended density, lines, and spacing.
 - Trim development files from the release package.
-
-### 2.0.0
-- Refresh live game data as changes occur so scores update sooner.
-- Recommend cache warmer settings based on tournament size.
-- Add a player scoresheet modal with season totals and a day-grouped play-by-play history.
-- Keep placeholder team names out of the games team filter.
-- Link team names in the spirit and player stats tables to the matching team page tab.
-- Link the team page header boxes to their matching tab.
-- Spell out the active filters in the games list heading.
-- Keep scoreboard labels readable while scrolling.
-- Add selectable visual themes.
-- Improve mobile drawer, modal, and preferences controls.
-- Keep active header indicators within the navigation bar.
-- Keep game filters visible and usable on smaller screens.
-- Keep segmented controls visually connected.
-- Fix the winner highlight in the games list marking the wrong team.
-- Remove a stray option from the games table group-by menu.
-- Show the game result in team spirit tables and player game history.
-- Fix team page spirit scores and average counting games with no spirit score.
-- Harden public configuration and diagnostic output.
-- Stack the tournament title below the logo on smaller screens.
-- Add an active players row to the game preview team comparison.
-- Hide spirit scores until both teams have submitted.
-- Include carried results in standings data and pool-filtered game lists.
-- Voting: better admin, reduced DB load, IPv6 support.
-- Improve the bracket standings view.
-- Show pool and bracket headings in the standings See All view.
-- Preload country flags so they no longer reload when navigating between screens.
-- Make the home page overview boxes clickable.
-- Clear server cache now also removes stale lock and temp files.
-- Fix config changes (e.g. date display) not taking effect until a server cache clear.
-- Harden API caching.
-- Add `DEFAULT_LANDING_PATH` config.
-- Harden page metadata output.
-- Harden season configuration handling.
-- Harden maintenance mode.
-- Harden local configuration access.
-- Harden response headers.
-- Harden initial setup.
-- Preselect the season during setup when only one is available.
-- Harden admin authentication.
-- Strengthen vote submission integrity.
-- Harden admin form submissions.
-- Auto-inject `enable-live.php` into `index.php` after `session_start()` during setup initialization.
-- Add `DATE_DISPLAY` config: set to `day-only` to show weekday names instead of full dates (useful for short tournaments).
-- Fix voting CORS policy that blocked requests in production (was hardcoded to localhost only).
-- Divide the teams-by-country tabs into evenly balanced groups, with the number of groups scaling to the country count.
-- Rename the single game margin chart to Score Difference and show the running score in its tooltip.
-- Fix coming soon page logo path.
-- Add optional traffic-driven cache warming to keep live data fresh and flatten server load under heavy tournament traffic (`ENABLE_CACHE_WARMER`).
-- Dramatically reduce database load when generating game detail and team data.
-- Add admin cache-warmer controls: run a larger batch on demand and keep the warmer running from an open admin tab even with no visitor traffic.
-- Harden cache administration and warming.
-- Sort the Games page fields filter in natural order.
-- Expand a player's row on the team stats page to show their season goal/assist history.
-- Make player names clickable in stats and roster tables to open their goal/assist history.
-- Show current-game contributions in player histories.
 
 
 <!-- END RECENT RELEASES -->

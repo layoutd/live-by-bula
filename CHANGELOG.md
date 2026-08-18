@@ -9,6 +9,16 @@ PR authors and agents:
 - Leave release transformation and README generation to the release script.
 -->
 
+### 3.0.4
+- Keep the winner indicator clear of the team names on the single game page and games tables.
+- Tighten the spacing below the game progress chart.
+- Reorder the single game tabs and keep game history available for in-progress games.
+- Link bracket games where only one team is decided yet.
+- Land scheduling placeholders on their source game in unnamed rounds.
+- Link crossover games that have not been played yet.
+- Make the Tournament Progression boxes fully clickable.
+- Follow placeholder links to the game cell itself.
+
 ### 3.0.3
 - Serve fresh cached API responses instead of regenerating on every request.
 

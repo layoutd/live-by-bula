@@ -213,6 +213,20 @@ For the complete release history, see [CHANGELOG.md](CHANGELOG.md).
 
 <!-- BEGIN RECENT RELEASES -->
 
+### 3.0.5
+- Show the live score in the browser tab title while a game is in progress, marked when it changes in a background tab.
+- Account for every goal in the holds and breaks stats, and mark the points that cannot be called either way, for games that never recorded who started on offense.
+- Stop the game history tables flickering as their columns line up.
+- Land Tournament Progression stops on the team inside the pool or bracket.
+- Make tournament simulation runs self-contained so several can run in parallel.
+- Color win/loss results in the single game history played games lists.
+- Keep table column headers in the text font in the Data-Dense Pro theme.
+- Reserve the tournament progression in-progress tag for games actually being played.
+- Link the team names on a game Player Stats tab to that team stats tab.
+- Keep the box score marker for the team starting each half on offense visible in all themes.
+- Land a Tournament Progression bracket stop on the team's most recent round.
+- Redesign the game summary timeline as a two-column point ledger.
+
 ### 3.0.4
 - Keep the winner indicator clear of the team names on the single game page and games tables.
 - Tighten the spacing below the game progress chart.
@@ -261,69 +275,6 @@ For the complete release history, see [CHANGELOG.md](CHANGELOG.md).
 - Keep team names on the text font in the Data-Dense Pro theme.
 - Reorder the home page overview boxes so the counts read in a natural order.
 - Fix the back button after opening a game from the scoreboard, and keep game names in crossover standings.
-
-### 3.0.0
-- Make stat header boxes fully clickable.
-- Organize Live administration settings into remembered tabs.
-- Add browser regression coverage for key routes, themes, TV screens, and Live admin.
-- Require UltiOrganizer 4.0.
-- Keep in-progress pool standings styling consistent.
-- Harden fresh-install database checks.
-- Verify the complete packaged UltiOrganizer runtime.
-- Reject malformed admin configuration JSON.
-- Keep empty TV game sections empty.
-- Resolve TV logos from the UltiOrganizer URL.
-- Support the full UltiOrganizer identifier range in voting.
-- Keep team spirit totals limited to completed games.
-- Update voting setup guidance.
-- Clarify maintenance splash access.
-- Keep advanced admin settings within mobile screens.
-- Keep dense chart labels readable on mobile.
-- Add a local tournament database switcher for development.
-- Allow player scoresheets to show recent games first.
-- Show team flags and country details only for international tournaments.
-- Let viewers display dates as weekday names only.
-- Add name filters to long team and player lists.
-- Show game outcomes with consistent win and loss badges.
-- Show first-half and second-half scoring on games with a recorded halftime.
-- Harden vote request handling.
-- Show each team's progress through tournament pools and brackets.
-- Show how team goals and assists are distributed across players.
-- Clarify offensive hold and defensive break statistics and chart them per team.
-- Keep tournament switching and standings aligned with the selected event.
-- Add a clear button to the team and player name filters.
-- Color a team's own games list by win and loss.
-- Clarify the player history and game timeline order toggle wording.
-- Keep games page filters when navigating back.
-- Tidy the spirit score tables with abbreviated category headers, a legend, and collapsible comments.
-- Harden Live admin and setup redirect handling.
-- Harden setup configuration handling.
-- Harden stream link and embed handling.
-- Improve the score difference chart axis labels.
-- Add more game team comparison metrics.
-- Combine the holds and scoring by half charts into one game summary chart.
-- Scroll to the selected player when opening a team stats link.
-- Only note carried-over results on standings pages that actually have them.
-- Show each team's placement at every tournament path stop.
-- Fix crossover standings layout.
-- Tidy the Live admin panel layout.
-- Preserve drop-in installation compatibility with unmodified UltiOrganizer 4 sites.
-- Update documentation to match the current system configuration.
-- Default root installations to the correct URL prefix during setup.
-- Load the classic UltiOrganizer page on an unconfigured root instead of looping on Live setup redirects.
-- Harden Nginx deployment defaults.
-- Return consistent JSON content types from the Live API.
-- Include all public interface assets in release packages.
-- Show the assists distribution before goals on the team players tab.
-- Show games in progress with a live indicator instead of a win or loss badge.
-- Show the placement each crossover game decides on standings pages.
-- Label non-placement games by round name instead of internal game codes.
-- Fix the Open Live! button on the admin page opening a 404.
-- Keep Live pages working when the data cache is cold or missing.
-- Document the v3 API changes for external integrations.
-- Keep custom theme colors when switching themes in the admin.
-- Fix visual themes not applying their intended density, lines, and spacing.
-- Trim development files from the release package.
 
 
 <!-- END RECENT RELEASES -->

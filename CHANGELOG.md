@@ -9,6 +9,20 @@ PR authors and agents:
 - Leave release transformation and README generation to the release script.
 -->
 
+### 3.0.5
+- Show the live score in the browser tab title while a game is in progress, marked when it changes in a background tab.
+- Account for every goal in the holds and breaks stats, and mark the points that cannot be called either way, for games that never recorded who started on offense.
+- Stop the game history tables flickering as their columns line up.
+- Land Tournament Progression stops on the team inside the pool or bracket.
+- Make tournament simulation runs self-contained so several can run in parallel.
+- Color win/loss results in the single game history played games lists.
+- Keep table column headers in the text font in the Data-Dense Pro theme.
+- Reserve the tournament progression in-progress tag for games actually being played.
+- Link the team names on a game Player Stats tab to that team stats tab.
+- Keep the box score marker for the team starting each half on offense visible in all themes.
+- Land a Tournament Progression bracket stop on the team's most recent round.
+- Redesign the game summary timeline as a two-column point ledger.
+
 ### 3.0.4
 - Keep the winner indicator clear of the team names on the single game page and games tables.
 - Tighten the spacing below the game progress chart.

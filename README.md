@@ -213,6 +213,9 @@ For the complete release history, see [CHANGELOG.md](CHANGELOG.md).
 
 <!-- BEGIN RECENT RELEASES -->
 
+### 3.0.6
+- Fix the layout of the latest-point panel under a live scoreboard.
+
 ### 3.0.5
 - Show the live score in the browser tab title while a game is in progress, marked when it changes in a background tab.
 - Account for every goal in the holds and breaks stats, and mark the points that cannot be called either way, for games that never recorded who started on offense.
@@ -249,32 +252,6 @@ For the complete release history, see [CHANGELOG.md](CHANGELOG.md).
 - Keep the single game box score clear of the header glow.
 - Jump straight to the top when opening a page instead of scrolling up to it.
 - Show Tournament Progression for a team still in its first pool.
-
-### 3.0.1
-- Lighten the error pages and drop their large background images.
-- Keep local configuration intact when updating from GitHub.
-- Show the number of fields in the home page overview stats.
-- Fix missing spacing between pool filter buttons on the Pools & Brackets page in some themes.
-- Base the home scoreboard's current and recent lists on each game's own scheduled length, and sort in-progress games first.
-- Match UltiOrganizer pool visibility in the standings navigation.
-- Keep game names visible in later crossover rounds so placeholder team names stay meaningful, and link them back to the pool they'll come from when known.
-- Keep the page scroll position when single game charts refresh.
-- Keep the scroll position when single team stats charts refresh.
-- Line up the header live stream link with the navigation links.
-- Show live stream links consistently wherever games are listed.
-- Align the game status and division with the team names in the compact mobile scoreboard.
-- Fix a stray rule above the scoreboard games in non-classic themes.
-- Include a game in progress in a team's stats.
-- Fix the player profile link on installs served from a subdirectory.
-- Show event times on the dashboard last play and align the single game scoreboard team column.
-- Give the single-game charts more room on phones so the bar labels stop overlapping.
-- Restore the previous scroll position when navigating back to a page.
-- Rename the tournament path section to Tournament Progression and hide it, along with scoring distribution, when a team has nothing to show yet.
-- Show a forfeit's final score under the Final column on the game page.
-- Keep the page position when switching tabs, and left-align the score difference chart.
-- Keep team names on the text font in the Data-Dense Pro theme.
-- Reorder the home page overview boxes so the counts read in a natural order.
-- Fix the back button after opening a game from the scoreboard, and keep game names in crossover standings.
 
 
 <!-- END RECENT RELEASES -->

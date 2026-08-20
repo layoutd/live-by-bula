@@ -9,6 +9,9 @@ PR authors and agents:
 - Leave release transformation and README generation to the release script.
 -->
 
+### 3.0.6
+- Fix the layout of the latest-point panel under a live scoreboard.
+
 ### 3.0.5
 - Show the live score in the browser tab title while a game is in progress, marked when it changes in a background tab.
 - Account for every goal in the holds and breaks stats, and mark the points that cannot be called either way, for games that never recorded who started on offense.

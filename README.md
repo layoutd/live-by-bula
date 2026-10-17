@@ -1,3 +1,10 @@
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/layoutd/live-by-bula/main/assets/live-by-bula-logo-white.svg">
+    <img src="https://raw.githubusercontent.com/layoutd/live-by-bula/main/assets/live-by-bula-logo.svg" alt="Live! by BULA" width="200">
+  </picture>
+</p>
+
 # Live! by BULA – Installation and Configuration Guide
 
 This guide explains how to set up and configure the [Live! by BULA](https://github.com/layoutd/live-by-bula/) application within an existing [UltiOrganizer](https://github.com/ktolonen/ultiorganizer) install.

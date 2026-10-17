@@ -213,6 +213,9 @@ For the complete release history, see [CHANGELOG.md](CHANGELOG.md).
 
 <!-- BEGIN RECENT RELEASES -->
 
+### 3.0.8
+- Keep the halftime marker in the box score when a timeout follows halftime.
+
 ### 3.0.7
 - Make it clear when a row of tabs or pool buttons has more to scroll to on phones.
 - Show team photos by default.
@@ -244,9 +247,6 @@ For the complete release history, see [CHANGELOG.md](CHANGELOG.md).
 - Link crossover games that have not been played yet.
 - Make the Tournament Progression boxes fully clickable.
 - Follow placeholder links to the game cell itself.
-
-### 3.0.3
-- Serve fresh cached API responses instead of regenerating on every request.
 
 
 <!-- END RECENT RELEASES -->

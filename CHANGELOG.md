@@ -9,6 +9,9 @@ PR authors and agents:
 - Leave release transformation and README generation to the release script.
 -->
 
+### 3.0.8
+- Keep the halftime marker in the box score when a timeout follows halftime.
+
 ### 3.0.7
 - Make it clear when a row of tabs or pool buttons has more to scroll to on phones.
 - Show team photos by default.

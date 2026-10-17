@@ -9,6 +9,11 @@ PR authors and agents:
 - Leave release transformation and README generation to the release script.
 -->
 
+### 3.0.7
+- Make it clear when a row of tabs or pool buttons has more to scroll to on phones.
+- Show team photos by default.
+- Show forfeited games clearly in game views and score lists.
+
 ### 3.0.6
 - Fix the layout of the latest-point panel under a live scoreboard.
 

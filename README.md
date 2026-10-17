@@ -213,6 +213,11 @@ For the complete release history, see [CHANGELOG.md](CHANGELOG.md).
 
 <!-- BEGIN RECENT RELEASES -->
 
+### 3.0.7
+- Make it clear when a row of tabs or pool buttons has more to scroll to on phones.
+- Show team photos by default.
+- Show forfeited games clearly in game views and score lists.
+
 ### 3.0.6
 - Fix the layout of the latest-point panel under a live scoreboard.
 
@@ -242,16 +247,6 @@ For the complete release history, see [CHANGELOG.md](CHANGELOG.md).
 
 ### 3.0.3
 - Serve fresh cached API responses instead of regenerating on every request.
-
-### 3.0.2
-- Show full team names in bracket standings on phones.
-- Fit the crossover standings to a phone screen so both teams stay visible.
-- Say "No games played" when a team has no games to list.
-- Link scheduling placeholders wherever games are listed, not just in standings.
-- Land a clicked standings placeholder on the game it comes from and mark it briefly.
-- Keep the single game box score clear of the header glow.
-- Jump straight to the top when opening a page instead of scrolling up to it.
-- Show Tournament Progression for a team still in its first pool.
 
 
 <!-- END RECENT RELEASES -->
